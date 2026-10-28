@@ -8,8 +8,8 @@ Follow the [final project lab](https://vsokolov.org/labs/final-project-lab.html)
 
 Alone, or a group of at most three. One person forks. That person adds the other members and `VadimSokolov` as collaborators. On a repository owned by a personal account the role is Write. On the fork, write the names and GitHub usernames under this heading. One person speaks at the presentation. Every member can explain the whole repository.
 
-- [mrahma32](https://github.com/mrahma32)
-- [mazad](https://github.com/mazad)
+- Mohammed Rahman, [mrahma32](https://github.com/mrahma32)
+- Maheen Azad, [mazadgmu](https://github.com/mazadgmu)
 
 ## Fork
 
@@ -59,7 +59,7 @@ Leave the data files out of git. A file you are allowed to republish goes on the
 
 R or Python. Use the language you can explain. AI assistants are allowed. On your fork, add one line to this README: what you used, and for what. You are responsible for everything on `main`, including the parts you did not write.
 
-Grok (xAI) helped draft `PROPOSAL.md` and the first `decisions.md` entry. mrahma32 will use Grok as the main assistant; mazad may use ChatGPT. We are responsible for everything on `main`.
+Grok (xAI) helped draft `PROPOSAL.md` and the first `decisions.md` entry. mrahma32 will use Grok as the main assistant; mazadgmu may use ChatGPT. We are responsible for everything on `main`.
 
 ## Files
 

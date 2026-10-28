@@ -4,12 +4,22 @@ At most one page. Replace the prompts under each heading. Leave the headings.
 
 ## Hypothesis
 
-State the claim in one sentence. Then name the single quantity you will forecast or estimate, with its units and the time window.
+If GMU grounds treated parking lots from a forecast of tonight’s low at Dulles, instead of waiting to see ice, they would salt on the nights that matter and skip the ones that do not.
+
+I will forecast **tonight’s minimum temperature at Washington Dulles (KIAD)**, in °F, for one overnight.
 
 ## Data
 
-Name the source, the unit of observation, the sample size, the time span, and how the data were collected. Say how what you measure differs from the quantity the decision needs. Say whether the terms let you republish the files. A release asset is a republished copy. If the terms do not allow that, the files stay off GitHub and `data/README.md` gives the command that downloads them from the source.
+The numbers come from NOAA’s daily climate records for Dulles International (station KIAD). Each day has a minimum temperature, along with things like precipitation that we can use as extra predictors. The series goes back decades, so we will have thousands of nights. The airport station logs the reading automatically.
+
+That reading is not the same thing as a Fairfax parking lot. Dulles is more open and windy than campus, and pavement can sit colder than the air. So we are modeling airport air temperature as a stand-in for the freeze the crew actually cares about. That gap is bias, not random noise.
+
+NOAA data is public domain. We will not put the raw files in git. A cleaned daily table can go on the GitHub release tagged `data`. If we ever cannot post a copy, `data/README.md` will have the download command and the notebook will check file hashes.
 
 ## Decision affected by the model
 
-Name who acts, and what they will do differently because of the prediction. Say which mistake costs more.
+GMU grounds decides, late afternoon, whether to pretreat lots and sidewalks tonight: send the brine/salt trucks, or stand down.
+
+A forecast well below freezing means they roll. A forecast comfortably above means they stay in.
+
+The expensive mistake is skipping a freeze. Ice means slips, injuries, and a much bigger bill than a night of salt they did not strictly need. Wasted salt and overtime are cheaper. We will score the model in those terms (nights missed, or dollars), not in \(R^2\).

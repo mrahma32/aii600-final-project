@@ -1,40 +1,50 @@
-# Data
+# NOAA Dulles data snapshot
 
-The files the notebook reads are not committed. When the terms let you republish them, they are assets on the GitHub release tagged `data`. The release is public. When the terms let you download the files but not republish them, do not create that release. Write the command that downloads them from the source, and say what it needs (an account, a key in `.env`, a path).
+NOAA GHCN-Daily station USW00093738, WASHINGTON DULLES INTL AP (KIAD), 38.9347 N, 77.4472 W, 89.6 m elevation. Downloaded 2026-11-17.
 
-`OWNER/REPO` is your fork, the form `username/aii600-final-project`. In the clone, once:
+Source: https://www.ncei.noaa.gov/pub/data/ghcn/daily/all/USW00093738.dly
+Format and flags: https://www.ncei.noaa.gov/pub/data/ghcn/daily/readme.txt
+Station metadata: https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt
+Citation: Menne et al. (2012), GHCN-Daily Version 3, https://doi.org/10.7289/V5D21VHZ
+NOAA data policy: https://www.noaa.gov/information-technology/open-data-dissemination
 
-```bash
-gh repo set-default OWNER/REPO
+NOAA U.S. government climate data may be redistributed with attribution. The exact file belongs on the GitHub release tagged `data`, not in Git. The notebook reads only USW00093738.dly; metadata was used to verify station identity.
+
+## Exact file hash
+
+USW00093738.dly SHA-256:
+
+```text
+5740ef38697685f37a90dd81b3b9dedd2b67e9fa7a4ed2164850f16aaba6ef84
 ```
 
-Create the release from the project root, after the files are in this folder:
+The notebook checks this hash before parsing. A later NOAA download can change: retrieve the release snapshot or document a revision and rerun; never bypass the hash check.
 
-```bash
-gh release create data data/your-file.csv --repo OWNER/REPO --title "Data" --notes "See data/README.md"
+## Reproduction from the repository root
+
+Once the release has been published:
+
+```powershell
+gh release download data --repo mrahma32/aii600-final-project --dir data --pattern USW00093738.dly
 ```
 
-Add every file the notebook reads. When a file changes:
+Publisher (requires GitHub write access; inspect an existing release before adding anything):
 
-```bash
-gh release upload data data/your-file.csv --repo OWNER/REPO --clobber
+```powershell
+gh release create data data/USW00093738.dly --repo mrahma32/aii600-final-project --title "NOAA Dulles data snapshot" --notes "Downloaded 2026-11-17; source and SHA-256 in data/README.md."
 ```
 
-On another machine:
+Direct source download, no account/key required:
 
-```bash
-gh release download data --dir data --repo OWNER/REPO
+```powershell
+Invoke-WebRequest -Uri 'https://www.ncei.noaa.gov/pub/data/ghcn/daily/all/USW00093738.dly' -OutFile 'data/USW00093738.dly'
+Get-FileHash data/USW00093738.dly -Algorithm SHA256
 ```
 
-Record a SHA-256 for each file. Replacing a file with `--clobber` does not show up in git, so update the hash in the same commit:
+## Sample and measurement
 
-```bash
-shasum -a 256 data/your-file.csv
-```
+Unit of observation: station day, parsed from fixed-width station-month-element records. TMIN is tenths of degrees Celsius, converted to Fahrenheit. Exclude sentinel -9999 and nonblank quality flags. Preserve measurement/source flags in the parsed table and reindex the calendar before lagging. Daily station aggregates have NOAA quality processing; instrument history and real-time publication timing were not audited.
 
-Replace the lines below.
+2000-01-01 through 2025-12-31: 9,497 valid TMIN days, zero missing/rejected. Three initial rows lack lag history. Modeling rows: 6,937 training (2000-01-04–2018-12-31), 1,096 calibration (2019–2021), 1,461 test (2022–2025). Test includes 342 days at or below 32°F.
 
-- Source, and whether the terms let you republish the files.
-- File names. On the `data` release, or the command that downloads them from the source.
-- SHA-256 of each file.
-- Unit of observation, sample size, and time span.
+Daily airport air temperature is not an exact overnight window, campus pavement temperature, or an ice observation.

@@ -61,6 +61,21 @@ R or Python. Use the language you can explain. AI assistants are allowed. On you
 
 Grok (xAI) helped draft `PROPOSAL.md` and the first `decisions.md` entry. mrahma32 will use Grok as the main assistant; mazadgmu may use ChatGPT. We are responsible for everything on `main`.
 
+ChatGPT/Codex helped Maheen prepare the 17 November preliminary Python notebook, NOAA verification, figures, model/loss comparisons, and draft decision-log entries. The team must review the assumptions and outputs before merging.
+
+## Run preliminary results
+
+Use Python 3.12.10. From the repository root:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+# Retrieve the exact NOAA snapshot using data/README.md.
+.\.venv\Scripts\python.exe run_notebook.py
+```
+
+The notebook has saved outputs; `fig/forecast_scores.csv` and `fig/decision_scores.csv` contain test scores. `build_preliminary.py` regenerates notebook source and clears outputs; execute `run_notebook.py` afterward. Daily airport temperature is a preliminary proxy for overnight pavement conditions. Ratios 2,5,10 are hypothetical sensitivity scenarios; the final operational cost ratio remains undecided.
+
 ## Files
 
 - `PROPOSAL.md`. The proposal. Replace the prompts. Leave the headings.

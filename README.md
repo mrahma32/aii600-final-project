@@ -61,7 +61,7 @@ R or Python. Use the language you can explain. AI assistants are allowed. On you
 
 Grok (xAI) helped draft `PROPOSAL.md` and the first `decisions.md` entry. mrahma32 will use Grok as the main assistant; mazadgmu may use ChatGPT. We are responsible for everything on `main`.
 
-ChatGPT/Codex helped Maheen prepare the 17 November preliminary Python notebook, NOAA verification, figures, model/loss comparisons, and draft decision-log entries. The team must review the assumptions and outputs before merging.
+ChatGPT/Codex helped Maheen write and run the Python notebook, check the NOAA files, make plots, compare the rules, and explain the choices and results, including simplifying this week's writing. We must check and understand the work before merging.
 
 ## Run preliminary results
 
@@ -74,11 +74,13 @@ python -m venv .venv
 .\.venv\Scripts\python.exe run_notebook.py
 ```
 
-The notebook has saved outputs; `fig/forecast_scores.csv` and `fig/decision_scores.csv` contain test scores. `build_preliminary.py` regenerates notebook source and clears outputs; execute `run_notebook.py` afterward.
+Start with **[PRELIMINARY_REVIEW.md](PRELIMINARY_REVIEW.md)** for a plain-language explanation of this week's question, choices, results, and limits. The notebook also explains each step.
 
-Revised for professor issue #1: use NOAA hourly observations to measure 18:00–08:00 Eastern minima, forecast at 16:00 using completed earlier nights, and compare the forecast against waiting to see ice. Report assumed margins 2,4,6°F below 32°F and cost ratios 2,5,10; no margin is calibrated and no operational ratio is selected. The full last calendar year is 2024 because the legacy hourly archive stops during 2025. The old daily/32°F results are superseded and not directly comparable.
+The saved notebook includes its results. `fig/forecast_scores.csv` and `fig/decision_scores.csv` contain the scores. `build_preliminary.py` rebuilds the notebook and clears its results; run `run_notebook.py` afterward to put the results back.
 
-`fig/decision_loss.png` compares forecast and waiting under all nine scenarios; `fig/missed_and_wasted_nights.png` shows both counts; `fig/cost_thresholds.png` derives the dispatch thresholds from the two costs; `fig/nightly_probability.png` shows chronological overnight probabilities. Review `PRELIMINARY_REVIEW.md` for the feedback mapping and remaining limitations. Raw nightly predictions stay in ignored `data/`, not Git.
+We updated the work to follow the professor's issue #1. At 4 p.m., we predict the lowest hourly Dulles temperature from 6 p.m. to 8 a.m. and compare the decision with waiting to see ice. We try assumed temperature margins of 2, 4, and 6°F below 32°F, and missed-night costs of 2, 5, and 10 times unnecessary salting. We do not know the real campus margin or dollar costs, so these are nine example cases rather than a chosen policy.
+
+The hourly archive ends partway through 2025, so the last full year we test is 2024. This version replaces the earlier whole-day/32°F analysis, which used a different target and sample. The figures and their meanings are listed in `PRELIMINARY_REVIEW.md`. Individual-night data stays in the ignored `data/` folder.
 
 ## Files
 

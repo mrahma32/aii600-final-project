@@ -1,37 +1,82 @@
-# Preliminary review — revised for professor issue #1
+# This week's project results, in plain language
 
-Due 18 November 2026 at 7:00 pm Eastern per README. Another teammate must review and merge PR #2 into main; this branch alone is not submitted.
+We want to help GMU decide at **4 p.m. whether to salt before tonight**. We compare using a forecast with waiting until ice appears.
 
-## How the analysis reflects the feedback
+## What we changed after the professor's feedback
 
-| Professor's requirement | Revised analysis and figure |
+| What he asked for | What we did |
 |---|---|
-| One late-afternoon decision about tonight | 16:00 Eastern decision; target minimum of hourly readings 18:00–08:00; completed prior nights only as predictors. |
-| State the margin below 32°F | Explicit assumed margins 2,4,6°F, cutoffs 30,28,26°F. All scenarios shown; none claimed calibrated. |
-| Costs determine the probability threshold | Cm/Cw=2,5,10 gives p > 1/3, 1/6, 1/11. fig/cost_thresholds.png shows expected losses and intersections. |
-| Baseline is waiting to see ice | Primary baseline misses every proxy-freeze night before reactive treatment, with zero unnecessary preventive salting. Persistence is additional only. |
-| Same held-out nights and loss units | 1,093 complete test nights in 2022–2024 for every method/scenario. fig/decision_loss.png shows common penalty units; fig/missed_and_wasted_nights.png shows both counts. |
-| Probability of tonight's freeze | fig/nightly_probability.png plots probabilities under each explicit temperature-margin mapping, with cost thresholds and observed proxy events. Actual campus-ice calibration is not claimed. |
+| Predict tonight, not a whole calendar day | Use hourly Dulles readings from 6 p.m. through 8 a.m. the next morning. |
+| State a temperature margin below 32°F | Try assumed margins of 2, 4, and 6°F. These give warning cutoffs of 30, 28, and 26°F. |
+| Let the two costs set the action | Try missed-night costs of 2, 5, and 10 times the cost of unnecessary salting. |
+| Compare with waiting to see ice | Count that rule as missing the night the ice first forms, as his example says. |
+| Compare both rules fairly | Use the same 1,093 test nights and the same scoring rules. Report missed nights and unnecessary salting separately. |
 
-## Computed example, not a chosen policy
+The temperature margins are assumptions. We do not have campus measurements showing which margin is right, or even confirming the direction of the airport-to-campus difference. We show all three rather than picking the one that makes our results look best.
 
-For assumed margin 4°F (Dulles cutoff 28°F) and Cm/Cw=5:
+## Why we split the years
 
-| Rule | Nights missed | Nights salted for nothing | Penalty units |
+- **2000–2018:** teach the model the temperature patterns.
+- **2019–2021:** use its errors to estimate how uncertain a forecast is.
+- **2022–2024:** test on later nights that were not used in either step above.
+
+Testing on later years is closer to predicting future weather than mixing the years randomly. The archive stops partway through 2025, so 2024 is the last complete year. The first morning of 2025 finishes the overnight window that started December 31, 2024.
+
+## How the model works
+
+We use a linear regression: it combines the lows from the two earlier nights with the time of year. At 4 p.m., both earlier nights are already finished. We also try a simple forecast that repeats the previous night's low; this is called **persistence**.
+
+We chose regression because we can explain what it uses. A more complex model might handle sudden weather changes better. A key weakness is assuming earlier temperature patterns and errors still apply in future cold weather.
+
+## When we would send trucks
+
+The professor's rule is:
+
+**Send trucks when the predicted freeze-warning chance is above Cw / (Cm + Cw).**
+
+Cm is the cost of missing a night. Cw is the cost of salting for nothing. If missing a night costs 5 times as much, we salt when the predicted chance is above **1/6, or 16.67%**. If missing a freeze becomes more expensive, we act at a lower probability.
+
+We do not have GMU's actual dollar costs. We give one unnecessary salting night a score of one penalty unit. The score is:
+
+**missed-night cost × missed nights + nights salted for nothing.**
+
+We try all three cost ratios with all three margins: nine cases in total. These are examples, not a chosen policy. We count warnings based on airport temperature, not observed campus ice.
+
+## One example of the results
+
+Assume a **4°F margin**, so the Dulles warning cutoff is **28°F**, and a missed night costs **5 times** unnecessary salting:
+
+| Rule | Nights missed | Nights salted for nothing | Total penalty score |
 |---|---:|---:|---:|
 | Wait to see ice | 104 | 0 | 520 |
-| Afternoon forecast | 10 | 153 | 203 |
+| Use the afternoon forecast | 10 | 153 | 203 |
 
-The forecast has lower weighted penalty than waiting in all nine assumptions. This example was not selected as the operational policy. All outputs appear in fig/decision_scores.csv. No dollar costs, injuries or actual ice were measured.
+The forecast misses fewer nights but sometimes sends trucks unnecessarily. Its total score is lower in this example and in all eight other cases. The waiting rule allows the crew to react later; it simply misses the chance to prevent that night's first freeze. This is the professor's comparison rule, not a record of what GMU actually did.
 
-Temperature forecast MAE 5.74°F versus persistence 6.46°F. Nominal 90% interval coverage 88.11% overall, only 80.40% in November–March. Cold-season uncertainty is a material weakness.
+Our temperature forecast is off by **5.74°F on average**, compared with **6.46°F** for repeating the previous night's low. Those are average absolute errors.
 
-## Source and limits
+The model also gives a temperature range meant to include 90% of nights. It includes **88.11% overall**, but only **80.40% in November–March**. It is too confident during cold weather, which matters for this decision.
 
-NOAA hourly station 724030-93738 / KIAD, source hashes in hourly_manifest.json. Snapshot data/dulles-hourly-2000-2025.zip belongs on release data; instructions in data/README.md. Earlier daily snapshot remains available for history but is not read by the revised notebook.
+## What each plot shows
 
-2000–2024 has 9,132 candidate nights, 9,077 complete; after requiring two complete prior nights: train 6,795, calibration 1,096, test 1,093. The archive stops during 2025, so 2024 is the last complete calendar year. Some 2025 records supply the final test night's next-morning observations.
+- `fig/decision_loss.png`: the forecast's penalty score versus waiting for ice in all nine cases. Lower is better.
+- `fig/missed_and_wasted_nights.png`: missed nights and unnecessary salting shown separately.
+- `fig/cost_thresholds.png`: why different costs lead to different probability thresholds.
+- `fig/nightly_probability.png`: the predicted warning chance over the first 60 winter test nights, with each action threshold shown.
+- `fig/raw_temperature.png`: the observed overnight temperatures and assumed cutoffs.
+- `fig/residuals_calibration.png`: whether predicted chances match how often airport warnings happen.
+- `fig/temperature_residuals.png`: where temperature predictions are too warm or too cold.
 
-The margins follow the professor's requested below-32 convention but are not measured offsets. Pavement being colder than air alone does not establish this cross-location relation. Obtain paired campus/airport measurements to validate direction and magnitude. The probabilities are for a defined airport proxy, not validated campus ice probabilities. Wetness and treatment effectiveness are absent. Hourly sampling, missing-night selection, no Lite quality flags, and historical reporting delays remain limitations.
+## What we still need to check
 
-Review these assumptions and the appended decision entry before merging. Old daily/32°F results are superseded; new results use a different target/sample and cannot be described as a direct before/after model improvement. Preserve prior decision entries as history. Final presentation and final checklist remain for the December checkpoint.
+Airport air is not campus pavement. We did not measure actual ice, wetness, how well salt works, injuries, or dollar savings. Readings once an hour may miss the coldest moment. The smaller NOAA dataset does not include the original quality flags. Leaving out incomplete nights may affect the results. Archived readings may also have been corrected or published too late for a real-time decision.
+
+The earlier whole-day/32°F results used a different target and sample. The current results replace them; they do not show that one unchanged model suddenly improved. We had already viewed that earlier test before making the professor's requested corrections.
+
+## Data and submission
+
+NOAA Dulles station 724030-93738 / KIAD supplies the hourly readings. There are 9,132 possible nights in 2000–2024 and 9,077 with all hourly readings. Requiring two complete earlier nights leaves 6,795 training nights, 1,096 uncertainty-check nights, and 1,093 test nights. The saved data is on the GitHub release named `data`. `hourly_manifest.json` lists the source files and their SHA-256 fingerprints; `data/README.md` explains how to download them.
+
+These explanations summarize this week's entries in `decisions.md`. The original entries remain there as the required history. ChatGPT/Codex helped with the code and writing; we must understand and check the work ourselves.
+
+**Another teammate must review and merge PR #2 into main by November 18, 2026, at 7 p.m. Eastern.** The final presentation and remaining final checklist are for December.

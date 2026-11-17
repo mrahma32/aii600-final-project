@@ -1,0 +1,123 @@
+{
+  "downloaded": "2026-11-17",
+  "archive": "dulles-hourly-2000-2025.zip",
+  "sha256": "eae3997bb1d911aed49bdb0c974aaac8d0aa389695f0e2483b4ea2cee827ee74",
+  "files": {
+    "724030-93738-2000.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2000/724030-93738-2000.gz",
+      "sha256": "c2fd4f6272082a5594bc2080f81c1b00be504b5f2f405fa20382e3486ee599fe"
+    },
+    "724030-93738-2001.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2001/724030-93738-2001.gz",
+      "sha256": "5647b8ba1b48994cc0ef62ace6f07a7a394545f70bcfef9e23e67c5723a33afa"
+    },
+    "724030-93738-2002.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2002/724030-93738-2002.gz",
+      "sha256": "8461fc1dbb0409edb71fb36557c2ad72541e4c8f5ab374c294da4c2eae2a6b10"
+    },
+    "724030-93738-2003.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2003/724030-93738-2003.gz",
+      "sha256": "1e241c9d39d9edc5494948ddd50022b0bec011e38521a6d5dcff1f139e874f88"
+    },
+    "724030-93738-2004.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2004/724030-93738-2004.gz",
+      "sha256": "d59ca1fec4440700b1d857d17542243e9dc1adafcaecaa7b0725a5438c2c62b9"
+    },
+    "724030-93738-2005.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2005/724030-93738-2005.gz",
+      "sha256": "730ab2f3d5d23ed861f599efacfbac3f9994c44e8cdcce026cfd0fd9b5ecc0f2"
+    },
+    "724030-93738-2006.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2006/724030-93738-2006.gz",
+      "sha256": "11c63bb0bd5d5db80f1ce7c367117c0742141b8379921e7b732fbae868da28de"
+    },
+    "724030-93738-2007.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2007/724030-93738-2007.gz",
+      "sha256": "9862f1b7d7a8bc081391c6a321fcfe267b3f1707ef2009146ffbe0c70e9006f9"
+    },
+    "724030-93738-2008.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2008/724030-93738-2008.gz",
+      "sha256": "4a478329cf2a588b69b7d118bd87c36b5ce6974d41b0a9f2bc62f65b2ebaaa32"
+    },
+    "724030-93738-2009.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2009/724030-93738-2009.gz",
+      "sha256": "63292f422a6d1e5723873a73d1aee726d6333d78da09c8eb939d79afc643fa0b"
+    },
+    "724030-93738-2010.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2010/724030-93738-2010.gz",
+      "sha256": "96d0bd3155cb95f26abcd4206d781a2450ab4daa8985cc8cec03ffc47b7108f5"
+    },
+    "724030-93738-2011.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2011/724030-93738-2011.gz",
+      "sha256": "12448d5dcb411c4c3a7f048181fc798e84ded96e5b05b3ec128a9c9c5e324020"
+    },
+    "724030-93738-2012.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2012/724030-93738-2012.gz",
+      "sha256": "dd4c11a32381832f9dd547d72b4e9f3eed07a4304eabe748d231aa73369be768"
+    },
+    "724030-93738-2013.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2013/724030-93738-2013.gz",
+      "sha256": "912a483dd1fb5e901870148496dec777e63e8ae835f4abe221b8ed094867e7e7"
+    },
+    "724030-93738-2014.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2014/724030-93738-2014.gz",
+      "sha256": "35e2636b5323d49256f804fa2854aa7af1a71add2e1c0a156c337d23ab7ef7d5"
+    },
+    "724030-93738-2015.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2015/724030-93738-2015.gz",
+      "sha256": "ea0e065b6212bed393227b66e9265e2d6ca00a61c48d03f6edb1ce776c440c7a"
+    },
+    "724030-93738-2016.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2016/724030-93738-2016.gz",
+      "sha256": "f5a5fabb4431528327b8ebd4a1a42cae7310fffa6fe130fa5c950787a6a73248"
+    },
+    "724030-93738-2017.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2017/724030-93738-2017.gz",
+      "sha256": "e30dc8199e74318012f76fd1911df73c267bad9577e6d001fdfeb70d7d39134a"
+    },
+    "724030-93738-2018.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2018/724030-93738-2018.gz",
+      "sha256": "0e1fbd43242f013478215d9f75b4187308a566b895c351d4bf6fcd354e08b943"
+    },
+    "724030-93738-2019.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2019/724030-93738-2019.gz",
+      "sha256": "020a7602df4d1af854d723fa98e96b348ac8db0f8e621c94af7c96c9ed9a74a2"
+    },
+    "724030-93738-2020.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2020/724030-93738-2020.gz",
+      "sha256": "feed15f698eab88cd23142e788946ac6e5fd994385df5784a7c30a3de662e941"
+    },
+    "724030-93738-2021.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2021/724030-93738-2021.gz",
+      "sha256": "f131aed925b7eada618db9cb008bcc578e81c617d1677cb2472dc90c09c7c415"
+    },
+    "724030-93738-2022.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2022/724030-93738-2022.gz",
+      "sha256": "1243433fcfc35178608d76ebc00ec86acf4d4ef5217d8920fb3a3f56c5bf4e95"
+    },
+    "724030-93738-2023.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2023/724030-93738-2023.gz",
+      "sha256": "a90b3396f8d70f14d7ded407c8283172ea2fa985c5664f39fad05c5b701eeac8"
+    },
+    "724030-93738-2024.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2024/724030-93738-2024.gz",
+      "sha256": "582fbf799916b95afd4292aa1cb40f7d5c83acd97c843bc1d0689238ec093bb6"
+    },
+    "724030-93738-2025.gz": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/data/2025/724030-93738-2025.gz",
+      "sha256": "d6a4b70056466a77700830680bf137eead7c8523bf9905a454efeeb80276273e"
+    },
+    "isd-history.csv": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-history.csv",
+      "sha256": "1994747ab4af1b97e63adb434b4d0d022f2daee76f0c144ea9ab46be2d906604"
+    },
+    "isd-lite-format.txt": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/isd-lite-format.txt",
+      "sha256": "f51222ec9c1aa3d5058637107b6de23710493588ae9acbdfaf9aa93b8dbbe0ce"
+    },
+    "isd-lite-technical-document.txt": {
+      "source": "https://noaa-isd-pds.s3.amazonaws.com/isd-lite/isd-lite-technical-document.txt",
+      "sha256": "6c81163af0f9a33d00707ed31c4c082c7dce0465072838710f311564e0b3c68a"
+    }
+  }
+}

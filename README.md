@@ -74,7 +74,11 @@ python -m venv .venv
 .\.venv\Scripts\python.exe run_notebook.py
 ```
 
-The notebook has saved outputs; `fig/forecast_scores.csv` and `fig/decision_scores.csv` contain test scores. `build_preliminary.py` regenerates notebook source and clears outputs; execute `run_notebook.py` afterward. Daily airport temperature is a preliminary proxy for overnight pavement conditions. Ratios 2,5,10 are hypothetical sensitivity scenarios; the final operational cost ratio remains undecided.
+The notebook has saved outputs; `fig/forecast_scores.csv` and `fig/decision_scores.csv` contain test scores. `build_preliminary.py` regenerates notebook source and clears outputs; execute `run_notebook.py` afterward.
+
+Revised for professor issue #1: use NOAA hourly observations to measure 18:00–08:00 Eastern minima, forecast at 16:00 using completed earlier nights, and compare the forecast against waiting to see ice. Report assumed margins 2,4,6°F below 32°F and cost ratios 2,5,10; no margin is calibrated and no operational ratio is selected. The full last calendar year is 2024 because the legacy hourly archive stops during 2025. The old daily/32°F results are superseded and not directly comparable.
+
+`fig/decision_loss.png` compares forecast and waiting under all nine scenarios; `fig/missed_and_wasted_nights.png` shows both counts; `fig/cost_thresholds.png` derives the dispatch thresholds from the two costs; `fig/nightly_probability.png` shows chronological overnight probabilities. Review `PRELIMINARY_REVIEW.md` for the feedback mapping and remaining limitations. Raw nightly predictions stay in ignored `data/`, not Git.
 
 ## Files
 

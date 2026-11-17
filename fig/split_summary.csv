@@ -1,0 +1,4 @@
+split,first_evening,last_evening,nights,proxy_freeze_m2,proxy_freeze_m4,proxy_freeze_m6
+train,2000-01-03,2018-12-31,6795,1170,923,739
+calibration,2019-01-01,2021-12-31,1096,153,110,76
+test,2022-01-01,2024-12-31,1093,149,104,81

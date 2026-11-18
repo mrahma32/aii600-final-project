@@ -61,6 +61,27 @@ R or Python. Use the language you can explain. AI assistants are allowed. On you
 
 Grok (xAI) helped draft `PROPOSAL.md` and the first `decisions.md` entry. mrahma32 will use Grok as the main assistant; mazadgmu may use ChatGPT. We are responsible for everything on `main`.
 
+ChatGPT/Codex helped Maheen write and run the Python notebook, check the NOAA files, make plots, compare the rules, and explain the choices and results, including simplifying this week's writing. We must check and understand the work before merging.
+
+## Run preliminary results
+
+Use Python 3.12.10. From the repository root:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+# Retrieve the exact NOAA snapshot using data/README.md.
+.\.venv\Scripts\python.exe run_notebook.py
+```
+
+Start with **[PRELIMINARY_REVIEW.md](PRELIMINARY_REVIEW.md)** for a plain-language explanation of this week's question, choices, results, and limits. The notebook also explains each step.
+
+The saved notebook includes its results. `fig/forecast_scores.csv` and `fig/decision_scores.csv` contain the scores. `build_preliminary.py` rebuilds the notebook and clears its results; run `run_notebook.py` afterward to put the results back.
+
+We updated the work to follow the professor's issue #1. At 4 p.m., we predict the lowest hourly Dulles temperature from 6 p.m. to 8 a.m. and compare the decision with waiting to see ice. We try assumed temperature margins of 2, 4, and 6°F below 32°F, and missed-night costs of 2, 5, and 10 times unnecessary salting. We do not know the real campus margin or dollar costs, so these are nine example cases rather than a chosen policy.
+
+The hourly archive ends partway through 2025, so the last full year we test is 2024. This version replaces the earlier whole-day/32°F analysis, which used a different target and sample. The figures and their meanings are listed in `PRELIMINARY_REVIEW.md`. Individual-night data stays in the ignored `data/` folder.
+
 ## Files
 
 - `PROPOSAL.md`. The proposal. Replace the prompts. Leave the headings.

@@ -1,0 +1,13 @@
+{
+  "test_nights": 1093,
+  "complete_nights": 9077,
+  "candidate_nights": 9132,
+  "train_nights": 6795,
+  "calibration_nights": 1096,
+  "excluded_model_rows": 148,
+  "forecast_MAE_F": 5.743586869262963,
+  "persistence_MAE_F": 6.463860933211345,
+  "interval_coverage": 0.8810612991765783,
+  "cold_season_coverage": 0.8039647577092511,
+  "residual_lag1": -0.040431408784823916
+}
